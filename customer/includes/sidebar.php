@@ -44,8 +44,6 @@
                         <ul class="submenu-list list-unstyled">
                             <li class="submenu-item"><a class="submenu-link" href="book_flight.php">Book Flights</a>
                             </li>
-                            <li class="submenu-item"><a class="submenu-link" href="add_flight.php">Cancel Flight</a>
-                            </li>
                         </ul>
                     </div>
                 </li>

@@ -5,64 +5,35 @@ require_once('../Database Connection file/mysqli_connect.php');
 			session_destroy();
 			session_start();
 
-			if(isset($_POST['Login']))
-			{
-				$data_missing=array();
-				if(empty($_POST['username']))
-				{
-					$data_missing[]='Username';
-				}
-				else
-				{
-					$user_name=trim($_POST['username']);
-				}
-				if(empty($_POST['password']))
-				{
-					$data_missing[]='Password';
-				}
-				else
-				{
-					$pass_word=$_POST['password'];
-				}
-
-				if(empty($data_missing))
-				{
-					$query="SELECT count(*) FROM Customer where customer_id=? and pwd=?";
-					$stmt=mysqli_prepare($dbc,$query);
-					mysqli_stmt_bind_param($stmt,"ss",$user_name,$pass_word);
-					mysqli_stmt_execute($stmt);
-					mysqli_stmt_bind_result($stmt,$cnt);
-					mysqli_stmt_fetch($stmt);
-					//echo $cnt;
-					mysqli_stmt_close($stmt);
-					mysqli_close($dbc);
-					/*$affected_rows=mysqli_stmt_affected_rows($stmt);
-					$response=@mysqli_query($dbc,$query);
-					echo $affected_rows;
-					*/
-					if($cnt==1)
+			if (isset($_POST['Login'])) {
+				$email = $_POST['email'];
+				$password = $_POST['password'];
+			
+				$query = "SELECT * FROM admin WHERE email='$email' and password='$password'";
+				$stmt = mysqli_query($dbc, $query);
+			
+				if (isset($_POST['Login'])) {
+			
+					$email = $_POST['email'];
+					$password = $_POST['password'];
+				
+					$query = "select * from customer where email='$email' and password='$password'";
+					$result = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
+					if (mysqli_num_rows($result) == 1) 
 					{
-						echo "Logged in <br>";
-						$_SESSION['login_user']=$user_name;
-						echo $_SESSION['login_user']." is logged in";
-						header("location: index.php");
-					}
-					else
-					{
-						echo "Login Error";
-						session_destroy();
-						header('location:login.php?msg=failed');
-					}
-					
+						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+							$_SESSION['id'] = $row['id'];
+							$_SESSION['name'] = $row['name'];
+							$_SESSION['login_user']=$email;
+						}
+						header("Location:index.php");
+					} else {
+							session_destroy();
+							header('location:login.php?msg=failed');
+							
+						}
 				}
-				else
-				{
-					echo "The following data fields were empty<br>";
-					foreach($data_missing as $missing)
-					{
-						echo $missing ."<br>";
-					}
-				}
+				
 			}
 		?>
 
@@ -71,7 +42,7 @@ require_once('../Database Connection file/mysqli_connect.php');
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Login - Airline Reservation System</title>
+    <title>Login - Air Ticket Management System</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -99,16 +70,16 @@ require_once('../Database Connection file/mysqli_connect.php');
                     <?php
                         if (isset($_GET['msg']) && $_GET['msg'] == 'failed') {
                             echo "<br>
-                                    <strong style='color:red'>Invalid Username/Password</strong>
+                                    <strong style='color:red'>Invalid email/Password</strong>
                                     <br><br>";
                         }
                     ?>
-					<h2 class="auth-heading text-center mb-5">Login</h2>
+					<h2 class="auth-heading text-center mb-5">Customer Login</h2>
 			        <div class="auth-form-container text-start">
 						<form class="auth-form login-form" action="" method="POST">         
 							<div class="username mb-3">
-								<label class="sr-only" for="username">username</label>
-								<input id="username" name="username" type="text" class="form-control username" placeholder="Enter Username" required="required">
+								<label class="sr-only" for="email">Email</label>
+								<input id="email" name="email" type="text" class="form-control email" placeholder="Enter email" required="required">
 							</div><!--//form-group-->
 							<div class="password mb-3">
 								<label class="sr-only" for="password">Password</label>
@@ -154,7 +125,7 @@ require_once('../Database Connection file/mysqli_connect.php');
 			    <div class="d-flex flex-column align-content-end h-100">
 				    <div class="h-100"></div>
 				    <div class="overlay-content p-3 p-lg-4 rounded">
-					    <h1 class="mb-3 overlay-title text-center">Online Air Ticket Reservation System</h1>
+					    <h1 class="mb-3 overlay-title text-center">Air Ticket Management System</h1>
 					    <div class="text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia cupiditate incidunt suscipit ullam eum, accusamus vitae aperiam nostrum accusantium omnis animi architecto optio dolorem vero commodi dolorum quidem. Consectetur dolor repellendus nihil laboriosam eum nobis delectus tempore dolores aliquam blanditiis! </div>
 				    </div>
 				</div>

@@ -9,7 +9,7 @@ include("includes/head.php");
 
 $id = $_GET['id']; // get id through query string
 
-$cancel = mysqli_query($dbc,"UPDATE ticket_details SET booking_status = 'CANCELED' WHERE pnr='$id'"); 
+$cancel = mysqli_query($dbc,"UPDATE ticket_details SET booking_status = 'CANCELED' WHERE id='$id'"); 
 
 
 if($cancel)

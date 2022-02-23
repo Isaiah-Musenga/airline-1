@@ -15,7 +15,7 @@ include("includes/head.php");
 				<div class="position-relative mb-3">
 					<div class="row g-3 justify-content-center">
 						<div class="col-auto">
-							<h1 class="app-page-title mb-0 text-uppercase">All Flights</h1>
+							<h1 class="app-page-title mb-0 text-uppercase">Upcoming Flights</h1>
 						</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@ include("includes/head.php");
 										</thead>
 										<tbody>
 										<?php
-												$query = "SELECT * FROM Flight_Details ORDER BY departure_date DESC";
+												$query = "SELECT * FROM Flight_Details WHERE departure_date <= CURRENT_TIMESTAMP ORDER BY departure_date DESC";
 												$result = mysqli_query($dbc, $query);
 												$count = 1;
 												while ($row = mysqli_fetch_array($result)) {
@@ -95,7 +95,6 @@ include("includes/head.php");
 														<td>$price_business</td>
 														<td>					
 															<a href='delete_flight.php?id=$id' class='btn btn-danger'>Delete</a>
-															<a href='edit_flight.php?id=$id' class='btn btn-primary'>Edit</a>
 														</td>
 													</tr>";
 													$count++;} ; ?>

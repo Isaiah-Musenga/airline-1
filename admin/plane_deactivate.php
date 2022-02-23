@@ -20,9 +20,9 @@ $id = $_GET['id'];
 
 				if(empty($data_missing))
 				{
-					$query="UPDATE Jet_Details SET active='No' WHERE jet_id=?";
-					$stmt=mysqli_prepare($dbc,$query);
-					mysqli_stmt_bind_param($stmt,"s",$jet_id);
+					$query="UPDATE Jet_Details SET active='No' WHERE id=?";
+					$stmt=mysqli_prepare($dbc,$query) or die(mysqli_error($dbc));
+					mysqli_stmt_bind_param($stmt,"s",$id);
 					mysqli_stmt_execute($stmt);
 					$affected_rows=mysqli_stmt_affected_rows($stmt);
 					mysqli_stmt_close($stmt);

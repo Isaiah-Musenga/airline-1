@@ -57,25 +57,25 @@ include("includes/head.php");
 												$result = mysqli_query($dbc, $query);
 												$count = 1;
 												while ($row = mysqli_fetch_array($result)) {
-													$jet_id = $row['jet_id'];
+													$id = $row['id'];
 													$jet_type = $row['jet_type'];
 													$total_capacity = $row['total_capacity'];
 													$active = $row['active'];
 													echo "<tr>
 														<td>$count</td>
-														<td>$jet_id</td>
+														<td>$id</td>
 														<td>$jet_type</td>
 														<td>$total_capacity</td>
 														<td>$active</td> ";
                                                         if($active == 'Yes'){
                                                             echo "
                                                                 <td>					
-                                                                    <a href='plane_deactivate.php?id=$jet_id' class='btn btn-danger' >Deactivate</a>
+                                                                    <a href='plane_deactivate.php?id=$id' class='btn btn-danger' >Deactivate</a>
                                                                 </td>";
                                                         } else {
                                                             echo "
                                                                 <td>					
-                                                                    <a href='plane_activate.php?id=$jet_id' class='btn btn-primary'>Activate</a>
+                                                                    <a href='plane_activate.php?id=$id' class='btn btn-primary'>Activate</a>
                                                                 </td>";
                                                         }
 														

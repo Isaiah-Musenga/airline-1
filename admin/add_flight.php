@@ -8,137 +8,25 @@ include("includes/head.php");
 <?php
 			if(isset($_POST['Submit']))
 			{
-				$data_missing=array();
-				if(empty($_POST['flight_no']))
-				{
-					$data_missing[]='Flight No.';
-				}
-				else
-				{
-					$flight_no=trim($_POST['flight_no']);
-				}
 
-				if(empty($_POST['origin']))
-				{
-					$data_missing[]='Origin';
-				}
-				else
-				{
-					$origin=$_POST['origin'];
-				}
-				if(empty($_POST['destination']))
-				{
-					$data_missing[]='Destination';
-				}
-				else
-				{
-					$destination=$_POST['destination'];
-				}
-
-				if(empty($_POST['dep_date']))
-				{
-					$data_missing[]='Departure Date';
-				}
-				else
-				{
-					$dep_date=$_POST['dep_date'];
-				}
-				if(empty($_POST['arr_date']))
-				{
-					$data_missing[]='Arrival Date';
-				}
-				else
-				{
-					$arr_date=$_POST['arr_date'];
-				}
-				
-				if(empty($_POST['dep_time']))
-				{
-					$data_missing[]='Departure Time';
-				}
-				else
-				{
-					$dep_time=$_POST['dep_time'];
-				}
-				if(empty($_POST['arr_time']))
-				{
-					$data_missing[]='Arrival Time';
-				}
-				else
-				{
-					$arr_time=$_POST['arr_time'];
-				}
-
-				if(empty($_POST['seats_eco']))
-				{
-					$data_missing[]='Seats(Economy)';
-				}
-				else
-				{
-					$seats_eco=$_POST['seats_eco'];
-				}
-				if(empty($_POST['seats_bus']))
-				{
-					$data_missing[]='Seats(Business)';
-				}
-				else
-				{
-					$seats_bus=$_POST['seats_bus'];
-				}
-
-				if(empty($_POST['price_eco']))
-				{
-					$data_missing[]='Price(Economy)';
-				}
-				else
-				{
-					$price_eco=$_POST['price_eco'];
-				}
-				if(empty($_POST['price_bus']))
-				{
-					$data_missing[]='Price(Business)';
-				}
-				else
-				{
-					$price_bus=$_POST['price_bus'];
-				}
-
-				if(empty($_POST['jet_id']))
-				{
-					$data_missing[]='Jet ID';
-				}
-				else
-				{
-					$jet_id=$_POST['jet_id'];
-				}
-
-				if(empty($data_missing))
-				{
+				$jet_id=$_POST['jet_id'];
+				$origin=$_POST['origin'];
+				$destination=$_POST['destination'];
+				$departure_date=$_POST['departure_date'];
+				$arrival_date=$_POST['arrival_date'];
+				$seats_eco=$_POST['seats_eco'];
+				$seats_bus=$_POST['seats_bus'];
+				$price_eco=$_POST['price_eco'];
+				$price_bus=$_POST['price_bus'];
+	
 					$cnt=-1;
+					$query="SELECT count(*) FROM Jet_Details WHERE id='$jet_id' and active='Yes'";
+					$res=mysqli_query($dbc,$query);
 
-					$query="SELECT count(*) FROM Jet_Details WHERE jet_id=? and active='Yes'";
-					$stmt=mysqli_prepare($dbc,$query);
-					mysqli_stmt_bind_param($stmt,"s",$jet_id);
-					mysqli_stmt_execute($stmt);
-					mysqli_stmt_bind_result($stmt,$cnt);
-					mysqli_stmt_fetch($stmt);
-					mysqli_stmt_close($stmt);
+					$query="INSERT INTO Flight_Details (jet_id,from_city,to_city,departure_date,arrival_date,seats_economy,seats_business,price_economy,price_business) VALUES ('$jet_id','$origin','$destination','$departure_date','$arrival_date','$seats_eco','$seats_bus','$price_eco','$price_bus')";
+					$stmt=mysqli_query($dbc,$query);
 
-					if($cnt==1)
-					{
-						$query="INSERT INTO Flight_Details (flight_no,jet_id,from_city,to_city,departure_date,arrival_date,departure_time,arrival_time,seats_economy,seats_business,price_economy,price_business) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-						$stmt=mysqli_prepare($dbc,$query);
-						mysqli_stmt_bind_param($stmt,"sssssssiiiis",$flight_no,$jet_id,$origin,$destination,$dep_date,$arr_date,$dep_time,$arr_time,$seats_eco,$seats_bus,$price_eco,$price_bus);
-						mysqli_stmt_execute($stmt);
-						$affected_rows=mysqli_stmt_affected_rows($stmt);
-						mysqli_stmt_close($stmt);
-					}
-					else
-					{
-						$affected_rows=0;
-					}
-					mysqli_close($dbc);
-					if($affected_rows==1)
+					if($stmt)
 					{
 						echo "Successfully Submitted";
 						header("location: all_flights.php?msgs=success");
@@ -146,18 +34,10 @@ include("includes/head.php");
 					else
 					{
 						echo "Submit Error";
-						//echo mysqli_error(Error);
-						header("location: add_flight.php?msg=failed");
+						echo mysqli_error($dbc);
+						//header("location: add_flight.php?msg=failed");
 					}
-				}
-				else
-				{
-					echo "The following data fields were empty! <br>";
-					foreach($data_missing as $missing)
-					{
-						echo $missing ."<br>";
-					}
-				}
+				
 			}
 			else
 			{
@@ -200,11 +80,7 @@ include("includes/head.php");
 									<div class="app-card-body">
 										<form class="settings-form" action="" method="post">
 											<div class="row mb-3">
-												<div class="col">
-												<label for="setting-input-1" class="form-label">Flight No.</label>
-													<input type="text" class="form-control" placeholder="First name" aria-label="First name" name="flight_no" required/>
-												</div>
-												<div class="col">
+												<div class="col-6">
 												<label for="setting-input-1" class="form-label">Plane No.</label>
 													<input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="jet_id" required />
 												</div>
@@ -222,21 +98,11 @@ include("includes/head.php");
 											<div class="row mb-3">
 												<div class="col">
 												<label for="setting-input-1" class="form-label">Departure Date</label>
-													<input type="date" class="form-control" placeholder="First name" aria-label="First name" name="dep_date" required />
+													<input type="date" class="form-control" placeholder="First name" aria-label="First name" name="departure_date" required />
 												</div>
 												<div class="col">
 												<label for="setting-input-1" class="form-label">Arrival Date</label>
-													<input type="date" class="form-control" placeholder="Last name" aria-label="Last name" name="arr_date" required />
-												</div>
-											</div>
-											<div class="row mb-3">
-												<div class="col">
-												<label for="setting-input-1" class="form-label">Departure Time</label>
-													<input type="time" class="form-control" placeholder="First name" aria-label="First name" name="dep_time" required />
-												</div>
-												<div class="col">
-												<label for="setting-input-1" class="form-label">Arrival Time</label>
-													<input type="time" class="form-control" placeholder="Last name" aria-label="Last name" name="arr_time" required />
+													<input type="date" class="form-control" placeholder="Last name" aria-label="Last name" name="arrival_date" required />
 												</div>
 											</div>
 											<div class="row mb-3">

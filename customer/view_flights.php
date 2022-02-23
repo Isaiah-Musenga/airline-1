@@ -3,6 +3,8 @@
 require_once('../Database Connection file/mysqli_connect.php');
 include("includes/head.php");
 
+$email = $_SESSION['login_user'];
+
 ?>
 
 
@@ -96,15 +98,16 @@ include("includes/head.php");
 
 					if($class=="economy")
 					{
-						$query="SELECT flight_no,from_city,to_city,departure_date,departure_time,arrival_date,arrival_time,price_economy FROM Flight_Details where from_city=? and to_city=? and departure_date=? and seats_economy>=? ORDER BY  departure_time";
+						$query="SELECT id,from_city,to_city,departure_date,arrival_date,price_economy FROM Flight_Details where from_city=? and to_city=? and departure_date=? and seats_economy>=?";
 						$stmt=mysqli_prepare($dbc,$query);
 						mysqli_stmt_bind_param($stmt,"sssi",$origin,$destination,$dep_date,$no_of_pass);
 						mysqli_stmt_execute($stmt);
-						mysqli_stmt_bind_result($stmt,$flight_no,$from_city,$to_city,$departure_date,$departure_time,$arrival_date,$arrival_time,$price_economy);
+						mysqli_stmt_bind_result($stmt,$id,$from_city,$to_city,$departure_date,$arrival_date,$price_economy);
 						mysqli_stmt_store_result($stmt);
 						if(mysqli_stmt_num_rows($stmt)==0)
 						{
 							echo "<h4 class='text-center'>No flights are available !</h4>";
+							echo "<a href='book_flight.php' class='text-center'>Search Another Flight!</a>";
 						}
 						else
 						{
@@ -121,13 +124,13 @@ include("includes/head.php");
 							</tr>";
 							while(mysqli_stmt_fetch($stmt)) {
         						echo "<tr>
-        						<td>".$flight_no."</td>
+        						<td>".$id."</td>
         						<td>".$from_city."</td>
 								<td>".$to_city."</td>
 								<td>".$departure_date."</td>
 								<td>".$arrival_date."</td>
 								<td>K ".$price_economy."</td>
-								<td><input type=\"radio\" name=\"select_flight\" value=\"".$flight_no."\"></td>
+								<td><input type=\"radio\" name=\"select_flight\" value=\"".$id."\"></td>
         						</tr>";
     						}
     						echo "</table> <br>";
@@ -137,11 +140,11 @@ include("includes/head.php");
 					}
 					else if($class="business")
 					{
-						$query="SELECT flight_no,from_city,to_city,departure_date,departure_time,arrival_date,arrival_time,price_business FROM Flight_Details where from_city=? and to_city=? and departure_date=? and seats_business>=? ORDER BY  departure_time";
+						$query="SELECT id,from_city,to_city,departure_date,arrival_date,price_business FROM Flight_Details where from_city=? and to_city=? and departure_date=? and seats_business>=?";
 						$stmt=mysqli_prepare($dbc,$query);
 						mysqli_stmt_bind_param($stmt,"sssi",$origin,$destination,$dep_date,$no_of_pass);
 						mysqli_stmt_execute($stmt);
-						mysqli_stmt_bind_result($stmt,$flight_no,$from_city,$to_city,$departure_date,$departure_time,$arrival_date,$arrival_time,$price_business);
+						mysqli_stmt_bind_result($stmt,$id,$from_city,$to_city,$departure_date,$arrival_date,$price_business);
 						mysqli_stmt_store_result($stmt);
 						if(mysqli_stmt_num_rows($stmt)==0)
 						{
@@ -161,13 +164,13 @@ include("includes/head.php");
 							</tr>";
 							while(mysqli_stmt_fetch($stmt)) {
         						echo "<tr>
-        						<td>".$flight_no."</td>
+        						<td>".$id."</td>
         						<td>".$from_city."</td>
 								<td>".$to_city."</td>
 								<td>".$departure_date."</td>
 								<td>".$arrival_date."</td>
 								<td>K ".$price_business."</td>
-								<td><input type=\"radio\" name=\"select_flight\" value=".$flight_no."></td>
+								<td><input type=\"radio\" name=\"select_flight\" value=".$id."></td>
         						</tr>";
     						}
     						echo "</table> <br>";

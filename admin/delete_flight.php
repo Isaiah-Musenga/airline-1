@@ -9,7 +9,7 @@ include("includes/head.php");
 
 $id = $_GET['id']; // get id through query string
 
-$del = mysqli_query($dbc,"delete from flight_details where flight_no = '$id'"); // delete query
+$del = mysqli_query($dbc,"delete from flight_details where id = '$id'"); // delete query
 //$query="DELETE FROM Flight_Details WHERE flight_no=? AND departure_date=?";
 
 if($del)

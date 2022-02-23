@@ -73,13 +73,13 @@ include("includes/head.php");
 													<div class="form-outline">
 														<label class="form-label" for="form9Example3">Date of Departure</label>
 														<input type="date" class="form-control" name="dep_date" min=<?php
-																													$todays_date = date('Y-m-d');
-																													echo $todays_date;
-																													?> max=<?php
-																															$max_date = date_create(date('Y-m-d'));
-																															date_add($max_date, date_interval_create_from_date_string("90 days"));
-																															echo date_format($max_date, "Y-m-d");
-																															?> required>
+																$todays_date = date('Y-m-d');
+																echo $todays_date;
+																?> max=<?php
+																		$max_date = date_create(date('Y-m-d'));
+																		date_add($max_date, date_interval_create_from_date_string("90 days"));
+																		echo date_format($max_date, "Y-m-d");
+																		?> required>
 													</div>
 												</div>
 												<div class="col">
@@ -97,7 +97,6 @@ include("includes/head.php");
 														<select name="class" class="form-control">
 															<option value="economy">Economy Class</option>
 															<option value="business">Business Class</option>
-															<option value="first">First Class</option>
 														</select>
 													</div>
 												</div>

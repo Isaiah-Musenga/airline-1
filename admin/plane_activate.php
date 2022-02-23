@@ -10,19 +10,19 @@ $id = $_GET['id'];
 			if(isset($_POST['Activate']))
 			{
 				$data_missing=array();
-				if(empty($_POST['jet_id']))
+				if(empty($_POST['id']))
 				{
 					$data_missing[]='Jet ID';
 				}
 				else
 				{
-					$jet_id=trim($_POST['jet_id']);
+					$jet_id=trim($_POST['id']);
 				}
 
 				if(empty($data_missing))
 				{
 					// $query="UPDATE jet_details SET active='Yes' WHERE jet_id=?";
-					$query="UPDATE jet_details SET active='Yes' WHERE jet_id='{$jet_id}'";
+					$query="UPDATE jet_details SET active='Yes' WHERE id='$id'";
 					$affected_rows=mysqli_query($dbc,$query);
 					/*
 					$response=@mysqli_query($dbc,$query);
@@ -75,7 +75,7 @@ $id = $_GET['id'];
 			<div class="container">
 				<div class="form-outline mb-3">
 					<label class="form-label" for="">Enter a valid Jet ID</label>
-					<input type="text" name="jet_id" class="form-control" value="<?php echo $id; ?>" required />
+					<input type="text" name="id" class="form-control" value="<?php echo $id; ?>" required />
 				</div>
 			</div>
 			<div class="d-grid gap-2">

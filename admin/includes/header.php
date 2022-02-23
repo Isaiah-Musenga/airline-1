@@ -1,3 +1,16 @@
+<?php 
+	session_start();
+
+	// $id = $_SESSION['id'];
+  	// $name = $_SESSION['name'];
+  	// $email = $_SESSION['email'];
+
+	//admin
+	// if(!isset($_SESSION['login_user'])){ 
+	// 	header("Location: ../login.php");
+	// }
+?>
+
 <header class="app-header fixed-top" style="background-color: #fff !important;">
 	<div class="app-header-inner">
 		<div class="container-fluid py-2" style="background-color: #fff !important;">
@@ -20,10 +33,10 @@
 					<div class="app-utilities col-auto">
 						<!--//app-utility-item-->
 						<div class="app-utility-item app-user-dropdown dropdown">
-							<a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="assets/images/avatar.png" alt="user profile"></a>
+							<a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $_SESSION['name']; ?><img src="assets/images/avatar.png" alt="user profile"></a>
 							<ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-								<li><a class="dropdown-item" href="#">Account</a></li>
-								<li><a class="dropdown-item" href="#">Settings</a></li>
+								<li><a class="dropdown-item" href="account.php">Account</a></li>
+								<li><a class="dropdown-item" href="password.php">Settings</a></li>
 								<li>
 									<hr class="dropdown-divider">
 								</li>

@@ -71,7 +71,7 @@ include("includes/head.php");
 												$result = mysqli_query($dbc, $query);
 												$count = 1;
 												while ($row = mysqli_fetch_array($result)) {
-													$flight_no = $row['flight_no'];
+													$id = $row['id'];
 													$jet_id = $row['jet_id'];
 													$from_city = $row['from_city'];
 													$to_city = $row['to_city'];
@@ -84,7 +84,7 @@ include("includes/head.php");
 
 													echo "<tr>
 														<td>$count</td>
-														<td>$flight_no</td>
+														<td>$id</td>
 														<td>$jet_id</td>
 														<td>$from_city</td>
 														<td>$to_city</td>
@@ -94,7 +94,7 @@ include("includes/head.php");
 														<td>$price_economy</td>
 														<td>$price_business</td>
 														<td>					
-															<a href='delete_flight.php?id=$flight_no' class='btn btn-danger'>Delete</a>
+															<a href='delete_flight.php?id=$id' class='btn btn-danger'>Delete</a>
 														</td>
 													</tr>";
 													$count++;} ; ?>

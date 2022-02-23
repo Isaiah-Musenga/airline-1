@@ -41,11 +41,11 @@ include("includes/head.php");
 						$flights = mysqli_num_rows($result);
 
 					?>
-						<div class="app-card app-card-stat shadow-sm h-100">
+						<div class="app-card app-card-stat shadow-sm h-100 bg-primary">
 							<div class="app-card-body p-3 p-lg-4">
-								<h4 class="stats-type mb-1">Flights</h4>
-								<div class="stats-figure"><?php echo $flights; ?></div>
-								<div class="stats-meta">
+								<h4 class="stats-type mb-1" style="color: white !important;">Flights</h4>
+								<div class="stats-figure" style="color: white !important;"><?php echo $flights; ?></div>
+								<div class="stats-meta" style="color: white !important;">
 									Booked</div>
 							</div>
 							<a class="app-card-link-mask" href="#"></a>
@@ -61,11 +61,11 @@ include("includes/head.php");
 							$tickets = mysqli_num_rows($result);
 
 						?>
-						<div class="app-card app-card-stat shadow-sm h-100">
+						<div class="app-card app-card-stat shadow-sm h-100 bg-primary">
 							<div class="app-card-body p-3 p-lg-4">
-								<h4 class="stats-type mb-1">Tickets</h4>
-								<div class="stats-figure"><?php echo $tickets; ?></div>
-								<div class="stats-meta">
+								<h4 class="stats-type mb-1" style="color: white !important;">Tickets</h4>
+								<div class="stats-figure" style="color: white !important;"><?php echo $tickets; ?></div>
+								<div class="stats-meta" style="color: white !important;">
 									Reserved</div>
 							</div>
 							<!--//app-card-body-->
@@ -82,11 +82,11 @@ include("includes/head.php");
 							$planes = mysqli_num_rows($result);
 
 						?>
-						<div class="app-card app-card-stat shadow-sm h-100">
+						<div class="app-card app-card-stat shadow-sm h-100 bg-primary">
 							<div class="app-card-body p-3 p-lg-4">
-								<h4 class="stats-type mb-1">Planes</h4>
-								<div class="stats-figure"><?php echo $planes; ?></div>
-								<div class="stats-meta">
+								<h4 class="stats-type mb-1" style="color: white !important;">Planes</h4>
+								<div class="stats-figure" style="color: white !important;"><?php echo $planes; ?></div>
+								<div class="stats-meta" style="color: white !important;">
 									Available</div>
 							</div>
 							<!--//app-card-body-->
@@ -98,16 +98,16 @@ include("includes/head.php");
 					<div class="col-6 col-lg-3">
 						<?php
 
-						$query = "SELECT * FROM Flight_Details";
+						$query = "SELECT * FROM customer";
 						$result = mysqli_query($dbc, $query);
 						$users = mysqli_num_rows($result);
 
 						?>
-						<div class="app-card app-card-stat shadow-sm h-100">
+						<div class="app-card app-card-stat shadow-sm h-100 bg-primary">
 							<div class="app-card-body p-3 p-lg-4">
-								<h4 class="stats-type mb-1">Users</h4>
-								<div class="stats-figure"><?php echo $users; ?></div>
-								<div class="stats-meta">Registered</div>
+								<h4 class="stats-type mb-1" style="color: white !important;">Passangers</h4>
+								<div class="stats-figure" style="color: white !important;"><?php echo $users; ?></div>
+								<div class="stats-meta" style="color: white !important;">Registered</div>
 							</div>
 							<!--//app-card-body-->
 							<a class="app-card-link-mask" href="#"></a>
@@ -120,7 +120,7 @@ include("includes/head.php");
 				<div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert">
 					<div class="inner">
 						<div class="app-card-body p-3 p-lg-4">
-							<h3 class="mb-3 text-center">Lets Confuse the customers!!!</h3>
+							<h3 class="mb-3 text-center">Ticket Management Made Easy</h3>
 							<div class="row gx-5 gy-3">
 								<div class="col-12 col-lg-12">
 									<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sit saepe mollitia esse assumenda pariatur sequi ratione similique rerum facere? 

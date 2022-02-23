@@ -2,91 +2,26 @@
 	require_once('../Database Connection file/mysqli_connect.php');
 			if(isset($_POST['Submit']))
 			{
-				$data_missing=array();
-				if(empty($_POST['username']))
-				{
-					$data_missing[]='User Name';
-				}
-				else
-				{
-					$user_name=trim($_POST['username']);
-				}
-				if(empty($_POST['password']))
-				{
-					$data_missing[]='Password';
-				}
-				else
-				{
-					$password=$_POST['password'];
-				}
-				if(empty($_POST['email']))
-				{
-					$data_missing[]='Email ID';
-				}
-				else
-				{
-					$email_id=trim($_POST['email']);
-				}
 
-				if(empty($_POST['name']))
-				{
-					$data_missing[]='Name';
-				}
-				else
-				{
-					$name=$_POST['name'];
-				}
-				if(empty($_POST['phone_no']))
-				{
-					$data_missing[]='Phone No.';
-				}
-				else
-				{
-					$phone_no=trim($_POST['phone_no']);
-				}
-				if(empty($_POST['address']))
-				{
-					$data_missing[]='Address';
-				}
-				else
-				{
-					$address=$_POST['address'];
-				}
+				$name=trim($_POST['name']);
+				$phone_no=trim($_POST['phone_no']);
+				$address=$_POST['address'];
+				$email=trim($_POST['email']);
+				$password=$_POST['password'];
 
-				if(empty($data_missing))
-				{
-					$query="INSERT INTO Customer (customer_id,pwd,name,email,phone_no,address) VALUES (?,?,?,?,?,?)";
-					$stmt=mysqli_prepare($dbc,$query);
-					mysqli_stmt_bind_param($stmt,"ssssss",$user_name,$password,$name,$email_id,$phone_no,$address);
-					mysqli_stmt_execute($stmt);
-					$affected_rows=mysqli_stmt_affected_rows($stmt);
-					//echo $affected_rows."<br>";
-					// mysqli_stmt_bind_result($stmt,$cnt);
-					// mysqli_stmt_fetch($stmt);
-					// echo $cnt;
-					mysqli_stmt_close($stmt);
-					mysqli_close($dbc);
-					/*
-					$response=@mysqli_query($dbc,$query);
-					*/
-					if($affected_rows==1)
+					$query="INSERT INTO Customer (name, phone,address,email, password) VALUES ('$name','$phone_no', '$address', '$email', '$password')";
+					$stmt=mysqli_query($dbc,$query);
+
+					if($stmt)
 					{
 						header('location:login.php');
 					}
 					else
 					{
-						echo "Submit Error";
-						//echo mysqli_error();
+						header('location:signup.php');
+						echo mysqli_error($dbc);
 					}
-				}
-				else
-				{
-					echo "The following data fields were empty! <br>";
-					foreach($data_missing as $missing)
-					{
-						echo $missing ."<br>";
-					}
-				}
+				
 			}
 		?>
 
@@ -127,10 +62,6 @@
 								<input id="signup-name" name="name" type="text" class="form-control signup-name" placeholder="Full name" required="required">
 							</div>
 							<div class="email mb-3">
-								<label class="sr-only" for="signup-email">Email Address</label>
-								<input id="signup-name" name="email" type="email" class="form-control signup-name" placeholder="Enter Email" required="required">
-							</div>
-							<div class="email mb-3">
 								<label class="sr-only" for="signup-email">Phone Number</label>
 								<input id="signup-name" name="phone_no" type="number" class="form-control signup-name" placeholder="Enter Phone Number" required="required">
 							</div>
@@ -139,8 +70,8 @@
 								<input id="signup-name" name="address" type="text" class="form-control signup-name" placeholder="Enter Home Address" required="required">
 							</div>
 							<div class="email mb-3">
-								<label class="sr-only" for="signup-email">Username</label>
-								<input id="signup-email" name="username" type="text" class="form-control signup-email" placeholder="Enter Username" required="required">
+								<label class="sr-only" for="signup-email">Email Address</label>
+								<input id="signup-name" name="email" type="email" class="form-control signup-name" placeholder="Enter Email" required="required">
 							</div>
 							<div class="password mb-3">
 								<label class="sr-only" for="signup-password">Password</label>
@@ -194,4 +125,3 @@
 
 </body>
 </html> 
-

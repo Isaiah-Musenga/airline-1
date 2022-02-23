@@ -36,14 +36,14 @@ include("includes/head.php");
 										<thead>
 											<tr>
                                                 <th class="cell">#</th>
+                                                <th class="cell">Ticket No</th>
                                                 <th class="cell">PNR No.</th>
                                                 <th class="cell">Date</th>
                                                 <th class="cell">Flight No,</th>
                                                 <th class="cell">Travel Date</th>
                                                 <th class="cell">Class</th>
                                                 <th class="cell">Passengers</th>
-                                                <th class="cell">Payment Id</th>
-                                                <th class="cell">Customer Id</th>
+                                                <th class="cell">Customer Email</th>
                                                 <th class="cell">Status</th>
                                                 <th class="cell">Actions</th>
 											</tr>
@@ -55,26 +55,26 @@ include("includes/head.php");
                                             $result = mysqli_query($dbc, $query);
                                             $count = 1;
                                             while ($row = mysqli_fetch_array($result)) {
+                                                $id = $row['id'];
                                                 $pnr = $row['pnr'];
                                                 $date_of_reservation = $row['date_of_reservation'];
                                                 $flight_no = $row['flight_no'];
                                                 $journey_date = $row['journey_date'];
                                                 $class = $row['class'];
                                                 $no_of_passengers = $row['no_of_passengers'];
-                                                $payment_id = $row['payment_id'];
-                                                $customer_id = $row['customer_id'];
+                                                $customer_email = $row['customer_email'];
                                                 $booking_status = $row['booking_status'];
 
                                                 echo "<tr>
                                                     <td>$count</td>
+                                                    <td>$id</td>
                                                     <td>$pnr</td>
                                                     <td>$date_of_reservation</td>
                                                     <td>$flight_no</td>
                                                     <td>$journey_date</td>
                                                     <td>$class</td>
                                                     <td class='text-center'>$no_of_passengers</td>
-                                                    <td>$payment_id</td>
-                                                    <td>$customer_id</td>
+                                                    <td>$customer_email</td>
                                                     <td>$booking_status</td>
                                                     <td>					
                                                         <a href='#' class='btn btn-primary'>Action</a>
@@ -118,13 +118,13 @@ include("includes/head.php");
 										<thead>
                                             <tr>
                                                 <th class="cell">#</th>
+                                                <th class="cell">Ticket No</th>
                                                 <th class="cell">PNR No.</th>
                                                 <th class="cell">Date</th>
                                                 <th class="cell">Flight No,</th>
                                                 <th class="cell">Travel Date</th>
                                                 <th class="cell">Class</th>
                                                 <th class="cell">Passengers</th>
-                                                <th class="cell">Payment Id</th>
                                                 <th class="cell">Customer Id</th>
                                                 <th class="cell">Status</th>
 											</tr>
@@ -136,26 +136,26 @@ include("includes/head.php");
                                             $result = mysqli_query($dbc, $query);
                                             $count = 1;
                                             while ($row = mysqli_fetch_array($result)) {
+                                                $id = $row['id'];
                                                 $pnr = $row['pnr'];
                                                 $date_of_reservation = $row['date_of_reservation'];
                                                 $flight_no = $row['flight_no'];
                                                 $journey_date = $row['journey_date'];
                                                 $class = $row['class'];
                                                 $no_of_passengers = $row['no_of_passengers'];
-                                                $payment_id = $row['payment_id'];
-                                                $customer_id = $row['customer_id'];
+                                                $customer_email = $row['customer_email'];
                                                 $booking_status = $row['booking_status'];
 
                                                 echo "<tr>
                                                     <td>$count</td>
+                                                    <td>$id</td>
                                                     <td>$pnr</td>
                                                     <td>$date_of_reservation</td>
                                                     <td>$flight_no</td>
                                                     <td>$journey_date</td>
                                                     <td>$class</td>
                                                     <td class='text-center'>$no_of_passengers</td>
-                                                    <td>$payment_id</td>
-                                                    <td>$customer_id</td>
+                                                    <td>$customer_email</td>
                                                     <td>$booking_status</td>
                                                 </tr>";
                                                 $count++;
@@ -180,14 +180,14 @@ include("includes/head.php");
 										<thead>
 											<tr>
                                                 <th class="cell">#</th>
+                                                <th class="cell">Ticket No</th>
                                                 <th class="cell">PNR No.</th>
                                                 <th class="cell">Date</th>
                                                 <th class="cell">Flight No,</th>
                                                 <th class="cell">Travel Date</th>
                                                 <th class="cell">Class</th>
                                                 <th class="cell">Passengers</th>
-                                                <th class="cell">Payment Id</th>
-                                                <th class="cell">Customer Id</th>
+                                                <th class="cell">Customer Email</th>
                                                 <th class="cell">Status</th>
 											</tr>
 										</thead>
@@ -198,26 +198,26 @@ include("includes/head.php");
                                             $result = mysqli_query($dbc, $query);
                                             $count = 1;
                                             while ($row = mysqli_fetch_array($result)) {
+                                                $id = $row['id'];
                                                 $pnr = $row['pnr'];
                                                 $date_of_reservation = $row['date_of_reservation'];
                                                 $flight_no = $row['flight_no'];
                                                 $journey_date = $row['journey_date'];
                                                 $class = $row['class'];
                                                 $no_of_passengers = $row['no_of_passengers'];
-                                                $payment_id = $row['payment_id'];
-                                                $customer_id = $row['customer_id'];
+                                                $customer_email = $row['customer_email'];
                                                 $booking_status = $row['booking_status'];
 
                                                 echo "<tr>
                                                     <td>$count</td>
+                                                    <td>$id</td>
                                                     <td>$pnr</td>
                                                     <td>$date_of_reservation</td>
                                                     <td>$flight_no</td>
                                                     <td>$journey_date</td>
                                                     <td>$class</td>
                                                     <td class='text-center'>$no_of_passengers</td>
-                                                    <td>$payment_id</td>
-                                                    <td>$customer_id</td>
+                                                    <td>$customer_email</td>
                                                     <td>$booking_status</td>
                                                 </tr>";
                                                 $count++;

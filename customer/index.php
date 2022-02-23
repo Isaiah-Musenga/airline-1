@@ -33,7 +33,7 @@ include("includes/head.php");
 				<!--//app-card-->
 
 				<div class="row g-4 mb-4">
-					<div class="col-6 col-lg-3">
+					<div class="col-6">
 						<div class="app-card app-card-stat shadow-sm h-100">
 							<div class="app-card-body p-3 p-lg-4">
 								<div class="mb-4">
@@ -48,24 +48,8 @@ include("includes/head.php");
 							<a class="app-card-link-mask" href="book_flight.php"></a>
 						</div>
 					</div>
-					<div class="col-6 col-lg-3">
-						<div class="app-card app-card-stat shadow-sm h-100">
-							<div class="app-card-body p-3 p-lg-4">
-								<div class="mb-4">
-									<span class="nav-icon">
-									<svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" fill="#15a362" class="bi bi-calendar-x" viewBox="0 0 16 16">
-  <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z"/>
-  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-</svg>
-									</span>
-								</div>
-								<h4 class="stats-type mb-1">Cancel Flight</h4>
-							</div>
-							<a class="app-card-link-mask" href="cancel_flight.php"></a>
-						</div>
-					</div>
 					<!--//col-->
-					<div class="col-6 col-lg-3">
+					<div class="col-6">
 						<div class="app-card app-card-stat shadow-sm h-100">
 							<div class="app-card-body p-3 p-lg-4">
 								<div class="mb-4">
@@ -81,28 +65,12 @@ include("includes/head.php");
 							<a class="app-card-link-mask" href="booked_tickets.php"></a>
 						</div>
 					</div>
-					<div class="col-6 col-lg-3">
-						<div class="app-card app-card-stat shadow-sm h-100">
-							<div class="app-card-body p-3 p-lg-4">
-								<div class="mb-4">
-									<span class="nav-icon">
-									<svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" fill="#15a362" class="bi bi-printer" viewBox="0 0 16 16">
-  <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
-  <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
-</svg>
-									</span>
-								</div>
-								<h4 class="stats-type mb-1">Print Booked tickets</h4>
-							</div>
-							<a class="app-card-link-mask" href="#"></a>
-						</div>
-					</div>
 				</div>
 				<!--//row-->
 				<div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert">
 					<div class="inner">
 						<div class="app-card-body p-3 p-lg-4">
-							<h3 class="mb-3 text-center">Lets Confuse the customers!!!</h3>
+							<h3 class="mb-3 text-center">Ticket Management Made Easy</h3>
 							<div class="row gx-5 gy-3">
 								<div class="col-12 col-lg-12">
 									<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sit saepe mollitia esse assumenda pariatur sequi ratione similique rerum facere? 

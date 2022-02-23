@@ -35,8 +35,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
                         <li class="nav-item"><a class="nav-link me-lg-3" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#">Search Flights</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="customer/login.php">Login</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="customer/login.php">Passenger Login</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="admin/login.php">Admin Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,11 +48,10 @@
                     <div class="col-lg-6">
                         <!-- Mashead text and app badges-->
                         <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                            <h1 class="display-1 lh-1 mb-3">Air Ticket Reservation System</h1>
+                            <h1 class="display-1 lh-1 mb-3">Air Ticket Management System</h1>
                             <p class="lead fw-normal text-muted mb-5">Easy, faster and reliable way of reserving tickets</p>
                             <div class="d-flex flex-column flex-lg-row align-items-center">
                                 <a class="me-lg-3 mb-4 mb-lg-0 btn btn-success" href="customer/login.php">Get Started</a>
-                                <a class="btn btn-outline-success" href="#!">Search Flights</a>
                             </div>
                         </div>
                     </div>

@@ -66,9 +66,8 @@
 					echo "<tr>";
 					echo "<td class=\"fix_table_short\">Passenger's Name</td>";
 					echo "<td class=\"fix_table_short\">Passenger's Age</td>";
-					echo "<td class=\"fix_table_short\">Passenger's Gender</td>";
-					echo "<td class=\"fix_table_short\">Passenger's Inflight Meal</td>";
-					echo "<td class=\"fix_table_short\">Passenger's Frequent Flier ID (if applicable)</td>";
+					echo "<td class=\"fix_table_short\">Gender</td>";
+					echo "<td class=\"fix_table_short\">Inflight Meal</td>";
 					echo "</tr>";
 					echo "<tr>";
 					echo "<td class=\"fix_table_short\"><input type=\"text\" name=\"pass_name[]\" required></td>";
@@ -80,38 +79,18 @@
   					echo "<option value=\"other\">Other</option>";
   					echo "</select>";
   					echo "</td>";
+
   					echo "<td class=\"fix_table_short\">";
 					echo "<select name=\"pass_meal[]\">";
   					echo "<option value=\"yes\">Yes</option>";
   					echo "<option value=\"no\">No</option>";
   					echo "</select>";
-  					echo "</td>";
-  					echo "<td class=\"fix_table_short\"><input type=\"text\" name=\"pass_ff_id[]\"></td>";
+
 					echo "</tr>";
 					echo "</table>";
 					echo "<br><hr>";
 					$count=$count+1;
 				}
-				echo "<br><h2>ENTER TRAVEL DETAILS</h2>";
-				echo "<table cellpadding=\"5\">";
-				echo "<tr>";
-				echo "<td class=\"fix_table_short\">Do you want access to our Premium Lounge?</td>";
-				echo "<td class=\"fix_table_short\">Do you want to opt for Priority Checkin?</td>";
-				echo "<td class=\"fix_table_short\">Do you want to purchase Travel Insurance?</td>";
-				echo "</tr>";
-				echo "<tr>";
-				echo "<td class=\"fix_table\">";
-				echo "Yes <input type='radio' name='lounge_access' value='yes' checked/> No <input type='radio' name='lounge_access' value='no'/>";
-  				echo "</td>";
-  				echo "<td class=\"fix_table\">";
-				echo "Yes <input type='radio' name='priority_checkin' value='yes' checked/> No <input type='radio' name='priority_checkin' value='no'/>";
-  				echo "</td>";
-  				echo "<td class=\"fix_table\">";
-				echo "Yes <input type='radio' name='insurance' value='yes' checked/> No <input type='radio' name='insurance' value='no'/>";
-  				echo "</td>";
-				echo "</tr>";
-				echo "</table>";
-				echo "<br><br>";
 				echo "<input type=\"submit\" value=\"Submit Travel/Ticket Details\" name=\"Submit\">";
 				echo "</form>";
 		?>

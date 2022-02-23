@@ -41,64 +41,64 @@ include("includes/head.php");
 						<div class="app-card app-card-orders-table shadow-sm mb-5">
 							<div class="app-card-body">
 								<div class="table-responsive">
-									<table class="table app-table-hover mb-0 text-left">
-										<thead>
-											<tr>
-												<th class="cell">#</th>
-												<th class="cell">Flight No.</th>
-												<th class="cell">Jet ID</th>
-												<th class="cell">From Destination</th>
-												<th class="cell">To Destination</th>
-												<th class="cell">Start Date</th>
-												<th class="cell">Arrive Date</th>
-												<th class="cell">Start Time</th>
-												<th class="cell">Arrive Tine</th>
-												<th class="cell">Seat Economy</th>
-												<th class="cell">Seat Business</th>
-												<th class="cell">Price Economy</th>
-												<th class="cell">Price Business</th>
-												<th class="cell">Actions</th>
-											</tr>
-										</thead>
-										<tbody>
-										<?php
-												$query = "SELECT * FROM Flight_Details";
-												$result = mysqli_query($dbc, $query);
-												$count = 1;
-												while ($row = mysqli_fetch_array($result)) {
-													$flight_no = $row['flight_no'];
-													$jet_id = $row['jet_id'];
-													$from_city = $row['from_city'];
-													$to_city = $row['to_city'];
-													$departure_date = $row['departure_date'];
-													$arrival_date = $row['arrival_date'];
-													$departure_time = $row['departure_time'];
-													$arrival_time = $row['arrival_time'];
-													$seats_economy = $row['seats_economy'];
-													$seats_business = $row['seats_business'];
-													$price_economy = $row['price_economy'];
-													$price_business = $row['price_business'];
+										<table class="table app-table-hover mb-0 text-left">
+											<thead>
+												<tr>
+													<th class="cell">#</th>
+													<th class="cell">Flight No.</th>
+													<th class="cell">Jet ID</th>
+													<th class="cell">From Destination</th>
+													<th class="cell">To Destination</th>
+													<th class="cell">Start Date</th>
+													<th class="cell">Arrive Date</th>
+													<th class="cell">Start Time</th>
+													<th class="cell">Arrive Tine</th>
+													<th class="cell">Seat Economy</th>
+													<th class="cell">Seat Business</th>
+													<th class="cell">Price Economy</th>
+													<th class="cell">Price Business</th>
+													<th class="cell">Actions</th>
+												</tr>
+											</thead>
+											<tbody>
+											<?php
+													$query = "SELECT * FROM Flight_Details";
+													$result = mysqli_query($dbc, $query);
+													$count = 1;
+													while ($row = mysqli_fetch_array($result)) {
+														$flight_no = $row['flight_no'];
+														$jet_id = $row['jet_id'];
+														$from_city = $row['from_city'];
+														$to_city = $row['to_city'];
+														$departure_date = $row['departure_date'];
+														$arrival_date = $row['arrival_date'];
+														$departure_time = $row['departure_time'];
+														$arrival_time = $row['arrival_time'];
+														$seats_economy = $row['seats_economy'];
+														$seats_business = $row['seats_business'];
+														$price_economy = $row['price_economy'];
+														$price_business = $row['price_business'];
 
-													echo "<tr>
-														<td>$count</td>
-														<td>$flight_no</td>
-														<td>$jet_id</td>
-														<td>$from_city</td>
-														<td>$to_city</td>
-														<td>$departure_date</td>
-														<td>$arrival_date</td>
-														<td>$departure_time</td>
-														<td>$arrival_time</td>
-														<td>$seats_economy</td>
-														<td>$seats_business</td>
-														<td>$price_economy</td>
-														<td>$price_business</td>
-														<td>					
-															<a href='delete_flight.php?id=$flight_no' class='btn btn-danger'>Delete</a>
-														</td>
-													</tr>";
-													$count++;} ; ?>
-										</tbody>
+														echo "<tr>
+															<td>$count</td>
+															<td>$flight_no</td>
+															<td>$jet_id</td>
+															<td>$from_city</td>
+															<td>$to_city</td>
+															<td>$departure_date</td>
+															<td>$arrival_date</td>
+															<td>$departure_time</td>
+															<td>$arrival_time</td>
+															<td>$seats_economy</td>
+															<td>$seats_business</td>
+															<td>$price_economy</td>
+															<td>$price_business</td>
+															<td>					
+																<a href='delete_flight.php?id=$flight_no' class='btn btn-danger'>Delete</a>
+															</td>
+														</tr>";
+														$count++;} ; ?>
+											</tbody>
 									</table>
 								</div>
 

@@ -3,7 +3,6 @@
 require_once('../Database Connection file/mysqli_connect.php');
 include("includes/head.php"); 
 
-$email = $_SESSION['login_user'];
 ?>
 
 <body class="app">
@@ -16,7 +15,7 @@ $email = $_SESSION['login_user'];
 				<div class="position-relative mb-3">
 					<div class="row g-3 justify-content-center">
 						<div class="col-auto">
-							<h1 class="app-page-title mb-0 text-uppercase">All Canceled Tickets</h1>
+							<h1 class="app-page-title mb-0 text-uppercase">Tickets Payments</h1>
 						</div>
 					</div>
 				</div>
@@ -24,7 +23,7 @@ $email = $_SESSION['login_user'];
                     if (isset($_GET['msg']) && $_GET['msg'] == 'success') {
                         echo "
                         <div class='alert alert-success alert-dismissible fade show text-center' role='alert'>
-                            <strong style='color: green'>The Flight Ticket has been Deleted.</strong>
+                            <strong style='color: green'>The Flight Ticket has been Canceled.</strong>
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                         </div>";
                     } else if (isset($_GET['msg']) && $_GET['msg'] == 'failed') {
@@ -46,43 +45,36 @@ $email = $_SESSION['login_user'];
 										<thead>
 											<tr>
                                                 <th class="cell">#</th>
-                                                <th class="cell">Ticket No.</th>
+                                                <th class="cell">Payment Id</th>
+                                                <th class="cell">PNR</th>
                                                 <th class="cell">Date</th>
-                                                <th class="cell">Flight No,</th>
-                                                <th class="cell">Travel Date</th>
-                                                <th class="cell">Class</th>
-                                                <th class="cell">Passengers</th>
-                                                <th class="cell">Status</th>
-                                                <th class="cell">Actions</th>
+                                                <th class="cell">Amount</th>
+                                                <th class="cell">Payment Mode</th>
+                                                <th class="cell">Action</th>
 											</tr>
 										</thead>
 										<tbody>
                                         <?php
 
-                                            $query = "SELECT * FROM ticket_details WHERE customer_email='$email' AND booking_status='CANCELED'";
+                                            $query = "SELECT * FROM payment_details";
                                             $result = mysqli_query($dbc, $query) or die( mysqli_error($dbc));
                                             $count = 1;
                                             while ($row = mysqli_fetch_array($result)) {
+                                                $payment_id = $row['payment_id'];
                                                 $pnr = $row['pnr'];
-                                                $date_of_reservation = $row['date_of_reservation'];
-                                                $flight_no = $row['flight_no'];
-                                                $journey_date = $row['journey_date'];
-                                                $class = $row['class'];
-                                                $no_of_passengers = $row['no_of_passengers'];
-                                                //$payment_id = $row['payment_id'];
-                                                $booking_status = $row['booking_status'];
+                                                $payment_date = $row['payment_date'];
+                                                $payment_amount = $row['payment_amount'];
+                                                $payment_mode = $row['payment_mode'];
 
                                                 echo "<tr>
                                                     <td>$count</td>
+                                                    <td>$payment_id</td>
                                                     <td>$pnr</td>
-                                                    <td>$date_of_reservation</td>
-                                                    <td>$flight_no</td>
-                                                    <td>$journey_date</td>
-                                                    <td>$class</td>
-                                                    <td class='text-center'>$no_of_passengers</td>
-                                                    <td>$booking_status</td>
+                                                    <td>$payment_date</td>
+                                                    <td>$payment_amount</td>
+                                                    <td>$payment_mode</td>
                                                     <td>					
-                                                        <a href='#delete_ticket.php?id=$pnr' class='btn btn-danger'>Delete</a>
+                                                        <a href='cancel_flight.php?payment_id=$payment_id' class='btn btn-primary'>Action</a>
                                                     </td>
                                                 </tr>";
                                                 $count++;
